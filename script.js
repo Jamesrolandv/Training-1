@@ -184,11 +184,15 @@ cardContainer.addEventListener('mouseover', () => clearTimeout(timeOutIdCard));
 cardContainer.addEventListener('mouseleave', autoPlayCard);
 // videoplay on screen-------------------------------------
 
-const vid = document.querySelector('.vid1');
+const vid = document.querySelector('#vid');
 
-let vid1 = new IntersectionObserver(entry => {
-    entry.forEach(entries => {
-        entries.isIntersecting ? vid.play() : vid.pause();
+let vid1 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            vid.play();
+        }else{
+            vid.pause();
+        }
     })
 }, {
     threshold: .2,
